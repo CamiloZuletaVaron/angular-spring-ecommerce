@@ -1,0 +1,14 @@
+{
+  "routes": [
+    {
+      "route": "/",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "rewrite": "/products",
+      "redirect": "/products/item",
+      "statusCode": 301
+    }
+  ]
+}
