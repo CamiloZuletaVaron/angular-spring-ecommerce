@@ -26,9 +26,6 @@ export class DetailProductComponent implements OnInit {
   }
 
   handleProduct(id : string | null): void  {
-    this.productService.getProduct(id).subscribe(
-      product => this.product = product
-    );
+    this.product = this.productService.getProduct(id);  
   }
-  
 }

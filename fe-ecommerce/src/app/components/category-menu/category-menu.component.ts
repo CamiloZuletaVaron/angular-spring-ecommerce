@@ -21,10 +21,6 @@ export class CategoryMenuComponent implements OnInit{
   }
 
   listCategories() {
-    this.categoryService.getCategories().subscribe(
-      data => {
-        this.categories = data;
-      }
-    );
+    this.categories = this.categoryService.getCategories();
   }
 }

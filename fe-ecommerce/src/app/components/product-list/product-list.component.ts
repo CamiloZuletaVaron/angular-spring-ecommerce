@@ -78,25 +78,12 @@ export class ProductListComponent implements OnInit{
   }
 
   handleListProducts(){
-    this.productService.getProductListPaginate( this.pageNumber,
-                                                this.pageSize,
-                                                this.currentCategoryId)
-                                                .subscribe(
-                                                  response => {
-                                                    this.products = response._embedded.products;
-                                                    this.pageNumber = response.page.number;
-                                                    this.pageSize = response.page.size;
-                                                    this.totalElements = response.page.totalElements;
-                                                    this.totalPage = response.page.totalPages;
-                                                  })
+    this.products = this.productService.getProductListPaginate();
   }
 
   handleSearchProducts(){
     const theKeyWord: string|null = this.route.snapshot.paramMap.get('keyword');
     
-    this.productService.getProductSearchList(theKeyWord)
-    .subscribe(
-      products => this.products = products
-    )
+    this.products = this.productService.getProductSearchList(theKeyWord);
   }
 }

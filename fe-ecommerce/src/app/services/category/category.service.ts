@@ -1,8 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
-import { environment } from '../../../environments/environment';
-import { GetResponseCategories } from '../../common/get-response.interface';
-import { HttpClient } from '@angular/common/http';
 import { Category } from '../../common/category';
 
 @Injectable({
@@ -10,12 +6,33 @@ import { Category } from '../../common/category';
 })
 export class CategoryService {
 
-  constructor(private httpClient: HttpClient) { }
+  categories : Category[] = [];
+  constructor() {
+    this.categories = [
+      {
+        "id": 1,
+        "name": "Rings",
+      },
+      {
+        "id": 2,
+        "name": "Bracelets",
+      },
+      {
+        "id": 3,
+        "name": "Earrings",
+      },
+      {
+        "id": 4,
+        "name": "Necklaces",
+      },
+      {
+        "id": 5,
+        "name": "Watches",
+      }
+    ]
+   }
 
-  getCategories() : Observable<Category[]>{
-    const searchUrl = `${environment.categoriesURL}`;
-    return this.httpClient.get<GetResponseCategories>(searchUrl).pipe(
-      map(response => response._embedded.categories)
-    );
+  getCategories() : Category[]{
+    return this.categories;  
   }
 }
